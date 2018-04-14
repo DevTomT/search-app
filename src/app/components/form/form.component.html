@@ -1,0 +1,100 @@
+<div class="container form-container">
+
+  <h1 class="header center green-text">Concert search</h1>
+  <p class="center">Type Artist name. Choose date form. Choose date to. Click SHOW. Enjoy!</p>
+
+  <div class="row">
+
+    <!-- form-box -->
+    <div class="col s12 m6 offset-m3">
+      <div class="row">
+        <form class="col s12">
+          <div class="inner-form-box">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="artist" type="text" class="autocomplete" [ngModelOptions]="{standalone: true}" [(ngModel)]="artist">
+                <label for="artist">Artist</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" class="datepicker" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}" materialize="pickadate"
+                  [materializeParams]="[startDatepickerOptions]" />
+                <label for="picker">Date from</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input *ngIf="pickerVisible" type="text" [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}" materialize="pickadate"
+                  [materializeParams]="[endDatepickerOptions]" />
+                <label for="picker">Date to</label>
+              </div>
+            </div>
+
+            <div class="row center">
+              <button [disabled]="busy" (click)="showEvents()" class="btn-large waves-effect waves-light orange">Show</button>
+              <p class="center err bold">{{ emptyFieldInfo }}</p>
+              <p class="center err bold" *ngFor="let err of errorResponses">{{ err }}</p>
+              <p class="center err bold">{{ defaultErr }}</p>
+              <p class="center err bold">{{ invalidArtistInfo }}</p>
+              <p class="center err bold">{{ invalidArtistInfo2 }}</p>
+
+              <p class="center green-text bold">{{ zeroResultsInfo }}</p>
+              <p *ngIf="events.length" class="center green-text bold">Results founded: {{ events.length }}</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end form-box -->
+
+  </div>
+  <div class="row">
+
+    <!-- results-box -->
+    <div class="col s12 card-container">
+      <div class="card" *ngFor="let event of events">
+        <div class="card-image">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>Artist name:
+              <span class="green-text bigger-1 bold">{{ event.lineup[0] }}</span>
+            </p>
+            <p>Concert date:
+              <span class="green-text bigger-1 bold">{{ event.datetime | date : 'MMM d, y, h:mm a' }}</span>
+            </p>
+            <p>Country:
+              <span class="green-text bigger-1 bold">{{ event.venue.country }}</span>
+            </p>
+            <p>City:
+              <span class="green-text bigger-1 bold">{{ event.venue.city }}</span>
+            </p>
+          </div>
+          <div class="card-action center">
+            <a href="{{ event.url }}" target="_blank">Event LINK</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- results-box -->
+
+  </div>
+
+</div>
+
+<!-- preloader -->
+<div class="preloader-wrapper small" [ngClass]="{active: busy===true}">
+  <div class="spinner-layer spinner-blue-only">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div>
+    <div class="gap-patch">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+</div>
+<!-- end preloader -->

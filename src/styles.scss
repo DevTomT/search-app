@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~assets/scss/variables';
+
+body {
+  background: $black url('./assets/img/musician-2708190_1920.jpg') no-repeat top;
+  color: $white;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.err {
+  color: $warn;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bigger-1 {
+  font-size: 1.1em;
+}
+
+.input-field input[type=text]:focus+label {
+  color: $green !important;
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid $green !important;
+  box-shadow: 0 1px 0 0 $green !important;
+}
