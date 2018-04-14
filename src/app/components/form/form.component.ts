@@ -90,14 +90,15 @@ export class FormComponent implements OnInit {
   showEvents() {
     this.searchObj = {artist: this.artist, startDate: this.startDate, endDate: this.endDate};
 
+    this.setEndDate();
+    this.resetVariables();
+
+    if (!this.isFormCompleted()) {
+      return;
+    }
     if (!this.isArtistValid()) {
       this.invalidArtistInfo = 'Invalid Artist name';
       this.invalidArtistInfo2 = 'You can use letters, nubers, one space between words and signs "-", "&"';
-      return;
-    }
-    this.setEndDate();
-    this.resetVariables();
-    if (!this.isFormValid()) {
       return;
     }
 
@@ -153,7 +154,7 @@ export class FormComponent implements OnInit {
   }
 
 
-  private isFormValid() {
+  private isFormCompleted() {
     let isFieldEmpty = false;
 
     Object.values(this.searchObj).forEach(value => {
@@ -179,6 +180,9 @@ export class FormComponent implements OnInit {
 
 
   isArtistValid() {
+    if (!this.artist) {
+      return false;
+    }
     this.artist = this.artist.trim();
     const pattern = /^([a-z0-9-&]+\s?)+$/i;
     return pattern.test(this.artist);

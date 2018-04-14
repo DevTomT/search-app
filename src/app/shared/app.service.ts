@@ -9,7 +9,6 @@ export class AppService {
   constructor(private http: HttpClient) {}
 
   getArtistData(searchObject) {
-    // tslint:disable-next-line:max-line-length
     return this.http.get(`${this.API_PATH}artists/${searchObject.artist}/events?app_id=${this.API_KEY}&date=${searchObject.startDate}%2C${searchObject.endDate}`);
   }
 }
