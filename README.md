@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
+## To run app ypu should
+
+Run `git clone https://github.com/DevTomT/search-app.git`
+
+Go to `https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0` and sign up. Get api_key and paste it in `app.service.ts`
+
+```javascript
+private API_KEY = '<your_api_key>';
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
