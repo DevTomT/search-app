@@ -87,7 +87,7 @@ export class FormComponent implements OnInit {
   }
 
 
-  private showEvents() {
+  showEvents() {
     this.searchObj = {artist: this.artist, startDate: this.startDate, endDate: this.endDate};
 
     if (!this.isArtistValid()) {
