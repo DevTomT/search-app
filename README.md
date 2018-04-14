@@ -2,11 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
-## To run app ypu should
+## To run this app you should
 
 Run `git clone https://github.com/DevTomT/search-app.git`
 
-Go to `https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0` and sign up. Get api_key and paste it in `app.service.ts`
+Go to `https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0` and sign up. Get api_key and paste it into `app.service.ts`
 
 ```javascript
 private API_KEY = '<your_api_key>';
